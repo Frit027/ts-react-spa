@@ -25,5 +25,6 @@ module.exports = {
         indent: ['error', 4],
         '@typescript-eslint/indent': ['error', 4],
         'react/function-component-definition': [2, { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' }],
+        'react/jsx-indent': ['error', 4],
     },
 };
