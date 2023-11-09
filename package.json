@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Test case Single Page Application written in React",
   "main": "dist/build.js",
-  "types": "dist/types/index.d.ts",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
