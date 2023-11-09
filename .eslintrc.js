@@ -23,6 +23,7 @@ module.exports = {
     ],
     rules: {
         indent: ['error', 4],
+        'import/prefer-default-export': 0,
         '@typescript-eslint/indent': ['error', 4],
         'react/function-component-definition': [2, { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' }],
         'react/jsx-indent': ['error', 4],
