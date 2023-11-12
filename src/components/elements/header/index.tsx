@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
-import { classes, texts } from './constants';
+import { useNavigate } from 'react-router-dom';
+import {
+    Navbar, Container, Nav, Button,
+} from 'react-bootstrap';
+import { texts } from './constants';
 import { AuthContext } from '../../providers/auth-provider';
-import './styles.less';
 
 /**
  * Панель навигации сайта
@@ -28,13 +30,19 @@ const Header = () => {
     };
 
     return (
-        <nav className={classes.component}>
-            <NavLink className={classes.link} to="/">{texts.main}</NavLink>
-            <NavLink className={classes.link} to="/browse">{texts.browse}</NavLink>
-            {isLoggedIn()
-                ? <button type="button" onClick={handleLogOut}>{texts.logOut}</button>
-                : <button type="button" onClick={handleLogIn}>{texts.logIn}</button>}
-        </nav>
+        <Navbar bg="primary" data-bs-theme="dark">
+            <Container>
+                <Nav className="me-auto">
+                    <Navbar.Brand href="/">{texts.main}</Navbar.Brand>
+                    <Nav.Link href="/browse">{texts.browse}</Nav.Link>
+                </Nav>
+                <Nav>
+                    {isLoggedIn()
+                        ? <Button variant="primary" type="button" onClick={handleLogOut}>{texts.logOut}</Button>
+                        : <Button variant="primary" type="button" onClick={handleLogIn}>{texts.logIn}</Button>}
+                </Nav>
+            </Container>
+        </Navbar>
     );
 };
 
