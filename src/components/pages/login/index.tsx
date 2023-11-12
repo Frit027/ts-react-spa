@@ -56,7 +56,7 @@ const Login = () => {
     });
 
     return (
-        <Col className="text-center m-auto mt-5" xxl={4}>
+        <Col className="text-center m-auto mt-5" xs={12} md={8} xxl={4}>
             <Card className="p-3">
                 <Form onSubmit={formik.handleSubmit}>
                     <FloatingLabel className="mb-3" controlId="login" label={texts.login}>
