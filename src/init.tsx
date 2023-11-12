@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { makeServer } from './server';
 import AuthProvider from './components/providers/auth-provider';
 import App from './components/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  * Инициализация приложения
