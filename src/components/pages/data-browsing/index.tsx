@@ -7,14 +7,14 @@ import { AuthContext } from '../../providers/auth-provider';
 import { TTree } from '../../../server/interfaces';
 import { TChildren, TParent, TOrder } from './interfaces';
 import { compareAsc, compareDesc } from './utils';
-import { texts } from './constants';
+import Parents from '../../elements/parents';
+import Children from '../../elements/children';
 
 const DataBrowsing = () => {
     const [tree, setTree] = useState<TTree[]>([]);
     const [parents, setParents] = useState<TParent[]>([]);
     const [children, setChildren] = useState<TChildren[]>([]);
     const [order, setOrder] = useState<TOrder>('asc');
-    const [query, setQuery] = useState<string>('');
 
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -76,25 +76,10 @@ const DataBrowsing = () => {
         setOrder(event.target.value as TOrder);
     };
 
-    const handleChangeQuery = (event: ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
-    };
-
     return (
         <div>
-            <div style={{ float: 'left' }}>
-                {parents.map((parent) => <p key={parent.key} onClick={() => handleClickParent(parent.key)}>{`${'-'.repeat(parent.level)} ${parent.name}`}</p>)}
-            </div>
-            <div style={{ float: 'right' }}>
-                <input type="text" onChange={handleChangeQuery} />
-                <select onChange={handleChangeSort} value={order}>
-                    <option value="asc">{texts.asc}</option>
-                    <option value="desc">{texts.desc}</option>
-                </select>
-                {children
-                    .filter((child) => child.name.includes(query))
-                    .map((child) => <p key={child.key}>{child.name}</p>)}
-            </div>
+            <Parents parents={parents} handleClick={handleClickParent} />
+            <Children children={children} handleChangeSort={handleChangeSort} order={order} />
         </div>
     );
 };
