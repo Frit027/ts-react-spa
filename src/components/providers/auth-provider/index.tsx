@@ -3,22 +3,35 @@ import { TAuthContext, TAuthProviderProps, TData } from './interfaces';
 
 export const AuthContext = createContext<TAuthContext | null>(null);
 
+/**
+ * Провайдер, предоставляющий функции управления сессией пользователя
+ * @constructor
+ */
 const AuthProvider = (props: TAuthProviderProps) => {
-    const logIn = ({ token }: TData) => {
+    /**
+     * Сохранения токена в localStorage
+     * @param token - Токен пользователя
+     */
+    const logIn = ({ token }: TData): void => {
         localStorage.setItem('userData', JSON.stringify({ token }));
     };
 
-    const logOut = () => {
+    /**
+     * Удаление данных пользователя из localStorage
+     */
+    const logOut = (): void => {
         localStorage.removeItem('userData');
     };
 
-    const isLoggedIn = () => !!localStorage.getItem('userData');
-
-    const getToken = () => JSON.parse(localStorage.getItem('userData')).token;
+    /**
+     * Проверка на наличие данных пользователя в localStorage
+     * @returns {boolean} Есть ли данные в localStorage
+     */
+    const isLoggedIn = (): boolean => !!localStorage.getItem('userData');
 
     const value = useMemo(() => ({
-        logIn, logOut, isLoggedIn, getToken,
-    }), [logIn, logOut, isLoggedIn, getToken]);
+        logIn, logOut, isLoggedIn,
+    }), [logIn, logOut, isLoggedIn]);
 
     const { children } = props;
 
