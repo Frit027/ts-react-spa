@@ -1,27 +1,77 @@
-import React, { ChangeEvent, useState } from 'react';
-import { TChildrenProps } from './interfaces';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { InputGroup, Form, FloatingLabel } from 'react-bootstrap';
+import { TChildrenProps, TChildren, TOrder } from './interfaces';
 import { texts } from './constants';
+import { compareAsc, compareDesc } from './utils';
 
 /**
  * Список дочерних элементов выбранного родителя
  * @constructor
  */
 const Children = (props: TChildrenProps) => {
+    const [children, setChildren] = useState<TChildren[]>([]);
     const [query, setQuery] = useState<string>('');
+    const [order, setOrder] = useState<TOrder>('asc');
+    const { parents, parentKey } = props;
 
-    const handleChangeQuery = (event: ChangeEvent<HTMLInputElement>) => {
+    /**
+     * При изменении родительского ключа обновляем state
+     */
+    useEffect(() => {
+        if (!parentKey) {
+            return;
+        }
+
+        // Т.к. в задании просят "вывести список дочерних элементов выбранного родителя",
+        // то сохраняем только непосредственных детей родителя, а не всех потомков.
+        const foundChildren = parents
+            .find((parent) => parent.key === parentKey)
+            .children;
+
+        const sorted = [...foundChildren].sort(order === 'asc' ? compareAsc : compareDesc);
+        setChildren(sorted);
+    }, [parentKey]);
+
+    /**
+     * При изменении порядка сортировки обновляем state
+     */
+    useEffect(() => {
+        const sorted = [...children].sort(order === 'asc' ? compareAsc : compareDesc);
+        setChildren(sorted);
+    }, [order]);
+
+    /**
+     * Обновляем запрос в state при пользовательском вводе
+     * @param event - Событие ввода
+     */
+    const handleChangeQuery = (event: ChangeEvent<HTMLInputElement>): void => {
         setQuery(event.target.value);
     };
 
-    const { children, handleChangeSort, order } = props;
+    /**
+     * Обновляем порядок сортировки в state
+     * @param event - Событие выбора в HTMLSelectElement
+     */
+    const handleChangeSort = (event: ChangeEvent<HTMLSelectElement>): void => {
+        setOrder(event.target.value as TOrder);
+    };
 
     return (
-        <div style={{ float: 'right' }}>
-            <input type="text" onChange={handleChangeQuery} />
-            <select onChange={handleChangeSort} value={order}>
-                <option value="asc">{texts.asc}</option>
-                <option value="desc">{texts.desc}</option>
-            </select>
+        <div className="float-end mt-5 me-5 w-25">
+            <InputGroup>
+                <Form.Select className="w-50" onChange={handleChangeSort} value={order}>
+                    <option value="asc">{texts.asc}</option>
+                    <option value="desc">{texts.desc}</option>
+                </Form.Select>
+                <FloatingLabel className="w-50" controlId="query" label={texts.search}>
+                    <Form.Control
+                        type="search"
+                        name="query"
+                        placeholder={texts.search}
+                        onChange={handleChangeQuery}
+                    />
+                </FloatingLabel>
+            </InputGroup>
             {children
                 .filter((child) => child.name.includes(query))
                 .map((child) => <p key={child.key}>{child.name}</p>)}
