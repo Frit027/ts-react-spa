@@ -23,6 +23,7 @@ module.exports = {
     ],
     rules: {
         indent: ['error', 4],
+        'no-console': ['warn', { allow: ['error'] }],
         'import/prefer-default-export': 0,
         'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
         '@typescript-eslint/indent': ['error', 4],
