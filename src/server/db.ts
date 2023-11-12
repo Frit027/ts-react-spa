@@ -1,6 +1,4 @@
-import { TUser, TTree } from './interfaces';
-
-export const users: TUser[] = [
+export const users = [
     { login: 'user1', password: 'password1' },
     { login: 'user2', password: 'password2' },
     { login: 'user3', password: 'password3' },
@@ -8,7 +6,7 @@ export const users: TUser[] = [
     { login: 'user5', password: 'password5' },
 ];
 
-export const data: TTree[] = [
+export const data = [
     {
         key: '_',
         name: 'root',
