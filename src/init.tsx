@@ -4,7 +4,10 @@ import { makeServer } from './server';
 import AuthProvider from './components/providers/auth-provider';
 import App from './components/App';
 
-export default () => {
+/**
+ * Инициализация приложения
+ */
+export default (): void => {
     makeServer();
 
     const root = createRoot(document.getElementById('root'));
