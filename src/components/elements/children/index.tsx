@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { InputGroup, Form, FloatingLabel } from 'react-bootstrap';
+import {
+    InputGroup, Form, FloatingLabel, ListGroup,
+} from 'react-bootstrap';
 import { TChildrenProps, TChildren, TOrder } from './interfaces';
 import { texts } from './constants';
 import { compareAsc, compareDesc } from './utils';
@@ -72,9 +74,15 @@ const Children = (props: TChildrenProps) => {
                     />
                 </FloatingLabel>
             </InputGroup>
-            {children
-                .filter((child) => child.name.includes(query))
-                .map((child) => <p key={child.key}>{child.name}</p>)}
+            <ListGroup className="mt-3">
+                {children
+                    .filter((child) => child.name.includes(query))
+                    .map((child) => (
+                        <ListGroup.Item key={child.key} variant="info">
+                            {child.name}
+                        </ListGroup.Item>
+                    ))}
+            </ListGroup>
         </div>
     );
 };
