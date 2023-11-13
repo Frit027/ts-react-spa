@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../../providers/auth-provider';
 import { TTree, TParent } from './interfaces';
 import Parents from '../../elements/parents';
 import Children from '../../elements/children';
@@ -15,8 +13,6 @@ const DataBrowsing = () => {
     const [tree, setTree] = useState<TTree[]>([]);
     const [parents, setParents] = useState<TParent[]>([]);
     const [parentKey, setParentKey] = useState<string>('');
-    const { isLoggedIn } = useContext(AuthContext);
-    const navigate = useNavigate();
 
     /**
      * Получаем данные по API через GET-запрос
@@ -31,13 +27,9 @@ const DataBrowsing = () => {
     };
 
     /**
-     * При открытии страницы перенаправляем на страницу входа, если пользователь не авторизован
-     * Иначе загружаем данные с сервера
+     * При открытии страницы загружаем данные с сервера
      */
     useEffect(() => {
-        if (!isLoggedIn()) {
-            navigate('/login');
-        }
         fetchData();
     }, []);
 
