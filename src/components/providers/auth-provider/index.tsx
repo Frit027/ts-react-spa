@@ -7,7 +7,7 @@ export const AuthContext = createContext<TAuthContext | null>(null);
  * Провайдер, предоставляющий функции управления сессией пользователя
  * @constructor
  */
-const AuthProvider = (props: TAuthProviderProps) => {
+const AuthProvider = ({ children }: TAuthProviderProps) => {
     /**
      * Сохранения токена в localStorage
      * @param token - Токен пользователя
@@ -32,8 +32,6 @@ const AuthProvider = (props: TAuthProviderProps) => {
     const value = useMemo(() => ({
         logIn, logOut, isLoggedIn,
     }), [logIn, logOut, isLoggedIn]);
-
-    const { children } = props;
 
     return (
         <AuthContext.Provider value={value}>
