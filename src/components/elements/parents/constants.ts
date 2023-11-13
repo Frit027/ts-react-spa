@@ -1,1 +1,4 @@
-export const bullet = '— ';
+export const texts = {
+    title: 'Родительские элементы',
+    bullet: '— ',
+};
