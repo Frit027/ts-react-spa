@@ -88,7 +88,7 @@ const DataBrowsing = () => {
 
     return (
         <div>
-            <Parents parents={parents} handleClick={handleClickParent} />
+            <Parents parents={parents} parentKey={parentKey} handleClick={handleClickParent} />
             <Children parents={parents} parentKey={parentKey} />
         </div>
     );
