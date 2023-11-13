@@ -5,10 +5,8 @@ import { texts } from './constants';
  * Главная страница сайта
  * @constructor
  */
-const Main = () => {
-    return (
-        <h1>{texts.text}</h1>
-    );
-};
+const Main = () => (
+    <h2 className="text-center mt-3">{texts.text}</h2>
+);
 
 export default Main;
