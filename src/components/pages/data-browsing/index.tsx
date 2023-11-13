@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/auth-provider';
 import { TTree, TParent } from './interfaces';
 import Parents from '../../elements/parents';
 import Children from '../../elements/children';
+import { texts } from './constants';
 
 /**
  * Приватная страница сайта для просмотра информации с сервера
@@ -88,6 +89,7 @@ const DataBrowsing = () => {
 
     return (
         <div>
+            <h2 className="text-center mt-3">{texts.text}</h2>
             <Parents parents={parents} parentKey={parentKey} handleClick={handleClickParent} />
             <Children parents={parents} parentKey={parentKey} />
         </div>

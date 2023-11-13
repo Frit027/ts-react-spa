@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { TTreeProps } from './interfaces';
-import { bullet } from './constants';
+import { texts } from './constants';
 
 /**
  * Древовидная структура родительских элементов
@@ -12,6 +12,7 @@ const Parents = (props: TTreeProps) => {
 
     return (
         <div className="float-start mt-5 ms-5">
+            <h5>{texts.title}</h5>
             <ListGroup>
                 {parents.map((parent) => (
                     <ListGroup.Item
@@ -22,7 +23,7 @@ const Parents = (props: TTreeProps) => {
                         key={parent.key}
                         onClick={() => handleClick(parent.key)}
                     >
-                        {`${bullet.repeat(parent.level)}${parent.name}`}
+                        {`${texts.bullet.repeat(parent.level)}${parent.name}`}
                     </ListGroup.Item>
                 ))}
             </ListGroup>

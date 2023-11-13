@@ -59,7 +59,8 @@ const Children = (props: TChildrenProps) => {
     };
 
     return (
-        <div className="float-end mt-5 me-5 w-25">
+        <div className="float-end mt-5 me-5" style={{ width: '30%' }}>
+            <h5>{texts.title}</h5>
             <InputGroup>
                 <Form.Select className="w-50" onChange={handleChangeSort} value={order}>
                     <option value="asc">{texts.asc}</option>
