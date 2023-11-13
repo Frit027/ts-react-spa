@@ -10,7 +10,17 @@
 с возможностью просмотра дочерних элементов каждого родителя.
 
 ## Доступ
-Приложение доступно по ссылке: https://ts-react-spa.vercel.app/
+Приложение доступно по ссылке: https://ts-react-spa.vercel.app/  
+*Примечание: для входа нужно использовать один из следующих вариантов:*
+```js
+const users = [
+    { login: 'user1', password: 'password1' },
+    { login: 'user2', password: 'password2' },
+    { login: 'user3', password: 'password3' },
+    { login: 'user4', password: 'password4' },
+    { login: 'user5', password: 'password5' },
+];
+```
 
 ## Запуск приложение
 Версия `node`: не ниже 16.20.1.  
