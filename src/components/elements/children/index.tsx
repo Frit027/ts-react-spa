@@ -10,11 +10,10 @@ import { compareAsc, compareDesc } from './utils';
  * Список дочерних элементов выбранного родителя
  * @constructor
  */
-const Children = (props: TChildrenProps) => {
+const Children = ({ parents, parentKey }: TChildrenProps) => {
     const [children, setChildren] = useState<TChildren[]>([]);
     const [query, setQuery] = useState<string>('');
     const [order, setOrder] = useState<TOrder>('asc');
-    const { parents, parentKey } = props;
 
     /**
      * При изменении родительского ключа обновляем state
