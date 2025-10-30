@@ -1,17 +1,25 @@
-# ts-react-spa
-## Описание
-Данное приложение представляет собой Single Page Application (SPA) для просмотра информации сервиса с возможностью авторизации.
-Приложение состоит из трёх страниц:
-- главная страница;
-- страница для просмотра информации сервиса;
-- страница авторизации.
+<h1>
+    <div align="right">
+        <code><a href="#"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/us.svg" width="32" alt="English" title="English"/></a></code>
+        <a href="README-RU.md"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/ru.svg" width="32" alt="Russian" title="Russian"/></a>
+    </div>
+    ts-react-spa
+</h1>
 
-На странице просмотра информации реализовано отображение древовидной структуры данных, приходящей с сервера,
-с возможностью просмотра дочерних элементов каждого родителя.
+## About
+This application is a Single Page Application (SPA) for viewing service information with the option of authorization.  
+The application consists of three pages:
+- main page;
+- private page for viewing service information;
+- authorization page.
 
-## Доступ
-Приложение доступно по ссылке: https://ts-react-spa.vercel.app  
-*Примечание: для входа нужно использовать один из следующих вариантов:*
+The **information viewing page** displays a tree structure of data coming from the server, with the ability to view the
+child elements of each parent.
+
+## Try
+The website is available at: https://ts-react-spa.vercel.app
+
+***Note:** To log in, use one of the following usernames and passwords:*
 ```js
 const users = [
     { login: 'user1', password: 'password1' },
@@ -22,22 +30,40 @@ const users = [
 ];
 ```
 
-## Запуск приложения
-Версия `node`: не ниже 16.20.1.  
-Версия `npm`: не ниже 8.19.4.
-1. Клонировать репозиторий.
-2. Перейти в директорию проекта (`cd .\ts-react-spa\`).
-3. `npm install`.
-4. `npm start`.
-5. Перейти на localhost.
+## Demonstration
+#### Login page
+The screenshot below shows the website login page. Only authorised users can view information on the private page.
 
-## Технологии
-- Основные:
-    - [ECMAScript 2021](https://www.w3schools.com/js/js_2021.asp)
-    - [TypeScript](https://www.typescriptlang.org/) `[5.2.2]`
-- Интерфейс:
-    - [React Bootstrap](https://react-bootstrap.netlify.app/) `[2.9.1]`
-- Сборщик:
-    - [webpack](https://webpack.js.org/) `[5.89.0]`
-- Фейковый сервер:
-    - [Mirage JS](https://miragejs.com/) `[0.1.48]`
+![Login page](assets/login.png)
+
+#### Private page with tree-structured data
+The private page contains a tree sent by the server. When you click on a node in the tree, all its children will be
+displayed on the right. Children can be sorted in ascending or descending order. There is also a text search function
+among the children.
+
+![Private page](assets/private.png)
+
+## Installation and Usage
+Clone the repository.  
+Go to the project directory (`cd .\ts-react-spa\`).  
+In the project root run the commands:
+```console
+npm i
+npm start
+```
+Open localhost.
+
+## Dependencies
+- **Node.js** v16.20.1 or later;
+- **npm** v8.19.4 or later.
+
+## Technologies and tools used
+### Main
+- [ECMAScript 2021](https://www.w3schools.com/js/js_2021.asp)
+- [TypeScript](https://www.typescriptlang.org/) `[5.2.2]`
+### UI
+- [React Bootstrap](https://react-bootstrap.netlify.app/) `[2.9.1]`
+### Module bundler
+- [webpack](https://webpack.js.org/) `[5.89.0]`
+### Fake server
+- [Mirage JS](https://miragejs.com/) `[0.1.48]`
