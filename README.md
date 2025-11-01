@@ -1,3 +1,8 @@
+[![Static Badge](https://img.shields.io/badge/node-%3E%3D22.11.0-brightgreen)](https://nodejs.org/en)
+[![Static Badge](https://img.shields.io/badge/npm-%3E%3D10.9.0-blue)](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+![Static Badge](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Static Badge](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+
 <h1>
     <div align="right">
         <code><a href="#"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/us.svg" width="32" alt="English" title="English"/></a></code>
