@@ -30,16 +30,16 @@ const Header = () => {
     };
 
     return (
-        <Navbar bg="primary" data-bs-theme="dark">
+        <Navbar bg='primary' data-bs-theme='dark'>
             <Container>
-                <Nav className="me-auto">
-                    <Navbar.Brand href="/">{texts.main}</Navbar.Brand>
-                    <Nav.Link href="/browse">{texts.browse}</Nav.Link>
+                <Nav className='me-auto'>
+                    <Navbar.Brand href='/'>{texts.main}</Navbar.Brand>
+                    <Nav.Link href='/browse'>{texts.browse}</Nav.Link>
                 </Nav>
                 <Nav>
                     {isLoggedIn()
-                        ? <Button variant="primary" type="button" onClick={handleLogOut}>{texts.logOut}</Button>
-                        : <Button variant="primary" type="button" onClick={handleLogIn}>{texts.logIn}</Button>}
+                        ? <Button variant='primary' type='button' onClick={handleLogOut}>{texts.logOut}</Button>
+                        : <Button variant='primary' type='button' onClick={handleLogIn}>{texts.logIn}</Button>}
                 </Nav>
             </Container>
         </Navbar>
